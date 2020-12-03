@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WechatApi</name>
+    </assembly>
+    <members>
+        <member name="T:WechatApi.Controllers.AccessTokenController">
+            <summary>
+            缓存策略 参考网址:https://www.cnblogs.com/zhangxiaoyong/p/9472637.html
+            </summary>
+        </member>
+        <member name="M:WechatApi.Controllers.AccessTokenController.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,Microsoft.Extensions.Options.IOptions{WechatApi.Development.Model.Config.ConfigOption})">
+            <summary>
+            页面初始化
+            </summary>
+            <param name="_memoryCache"></param>
+            <param name="configSetting"></param>
+        </member>
+        <member name="M:WechatApi.Controllers.AccessTokenController.TryGetAccessToken">
+            <summary>
+            获取AccessToken 缓存保存一小时
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WechatApi.Development.Business.AccessTokenBusiness">
+            <summary>
+            auth.getAccessToken
+            </summary>
+        </member>
+        <member name="M:WechatApi.Development.Business.AccessTokenBusiness.TryGetAccessToken(Microsoft.Extensions.Caching.Memory.IMemoryCache,System.String,System.String)">
+            <summary>
+            获取AccessToken 
+            </summary>
+            <param name="memoryCache"></param>
+            <param name="wechat_AppID"></param>
+            <param name="wechat_AppSecret"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WechatApi.Development.Business.AccessTokenBusiness.GetAccessToken(System.String,System.String)">
+            <summary>
+            请求接口,获取AccessToken
+            </summary>
+            <param name="wechat_AppID"></param>
+            <param name="wechat_AppSecret"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WechatApi.Development.Model.Config.ConfigOption">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.Config.ConfigOption.Wechat_AppID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.Config.ConfigOption.Wechat_AppSecret">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WechatApi.Development.Model.Return.AccessTokenModel">
+            <summary>
+            https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/access-token/auth.getAccessToken.html
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.Return.AccessTokenModel.access_token">
+            <summary>
+            获取到的凭证
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.Return.AccessTokenModel.expires_in">
+            <summary>
+            凭证有效时间，单位：秒。目前是7200秒之内的值。
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.WechatBaseJson.errcode">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.WechatBaseJson.errmsg">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="M:WechatApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+            <param name="services"></param>
+        </member>
+    </members>
+</doc>
