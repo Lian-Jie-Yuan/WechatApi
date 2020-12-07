@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace WechatApi.Development.Model
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WechatBaseJson
     {
         /// <summary>
@@ -15,6 +18,6 @@ namespace WechatApi.Development.Model
         /// <summary>
         /// 错误信息
         /// </summary>
-        public string errmsg { get; set; }
+        public string errmsg { get; set; } = "";
     }
 }

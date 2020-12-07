@@ -1,44 +1,46 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WechatApi.Development.Business;
 using WechatApi.Development.Model.Config;
+using WechatApi.Development.Model.Params;
 
 namespace WechatApi.Controllers
 {
     /// <summary>
-    /// 缓存策略 参考网址:https://www.cnblogs.com/zhangxiaoyong/p/9472637.html
+    /// 登录auth.code2Session
+    /// https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/login/auth.code2Session.html
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class AccessTokenController : ControllerBase
+    public class LoginController : ControllerBase
     {
-        private readonly IMemoryCache memoryCache;
         private readonly IOptions<ConfigOption> settings;
+
 
         /// <summary>
         /// 页面初始化
         /// </summary>
-        /// <param name="_memoryCache"></param>
         /// <param name="configSetting"></param>
-        public AccessTokenController(IMemoryCache _memoryCache, IOptions<ConfigOption> configSetting)
+        public LoginController(IOptions<ConfigOption> configSetting)
         {
-            memoryCache = _memoryCache;
             settings = configSetting;
         }
+
         /// <summary>
-        /// 获取AccessToken 缓存保存一小时
+        /// 微信授权获取openId和会话密钥
         /// </summary>
+        /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public string TryGetAccessToken()
+        public string AuthCode2Session(LoginAuthModel model)
         {
-            return AccessTokenBusiness.TryGetAccessToken(memoryCache, settings.Value.Wechat_AppID, settings.Value.Wechat_AppSecret);
+            return JsonConvert.SerializeObject(LoginBusiness.AuthCode2Session(settings.Value.Wechat_AppID, settings.Value.Wechat_AppSecret, model.js_code));
         }
     }
 }

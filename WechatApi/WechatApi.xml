@@ -22,9 +22,28 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:WechatApi.Controllers.LoginController">
+            <summary>
+            登录auth.code2Session
+            https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/login/auth.code2Session.html
+            </summary>
+        </member>
+        <member name="M:WechatApi.Controllers.LoginController.#ctor(Microsoft.Extensions.Options.IOptions{WechatApi.Development.Model.Config.ConfigOption})">
+            <summary>
+            页面初始化
+            </summary>
+            <param name="configSetting"></param>
+        </member>
+        <member name="M:WechatApi.Controllers.LoginController.AuthCode2Session(WechatApi.Development.Model.Params.LoginAuthModel)">
+            <summary>
+            微信授权获取openId和会话密钥
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:WechatApi.Development.Business.AccessTokenBusiness">
             <summary>
-            auth.getAccessToken
+            微信AccessToken
             </summary>
         </member>
         <member name="M:WechatApi.Development.Business.AccessTokenBusiness.TryGetAccessToken(Microsoft.Extensions.Caching.Memory.IMemoryCache,System.String,System.String)">
@@ -44,19 +63,44 @@
             <param name="wechat_AppSecret"></param>
             <returns></returns>
         </member>
+        <member name="T:WechatApi.Development.Business.LoginBusiness">
+            <summary>
+            微信code2Session
+            </summary>
+        </member>
+        <member name="M:WechatApi.Development.Business.LoginBusiness.AuthCode2Session(System.String,System.String,System.String)">
+            <summary>
+            获取auth.code2Session
+            </summary>
+            <param name="wechat_AppID"></param>
+            <param name="wechat_AppSecret"></param>
+            <param name="js_code"></param>
+            <returns></returns>
+        </member>
         <member name="T:WechatApi.Development.Model.Config.ConfigOption">
             <summary>
-            
+            微信配置信息
             </summary>
         </member>
         <member name="P:WechatApi.Development.Model.Config.ConfigOption.Wechat_AppID">
             <summary>
-            
+            AppID
             </summary>
         </member>
         <member name="P:WechatApi.Development.Model.Config.ConfigOption.Wechat_AppSecret">
             <summary>
-            
+            AppSecret
+            </summary>
+        </member>
+        <member name="T:WechatApi.Development.Model.Params.LoginAuthModel">
+            <summary>
+            登录接口入参
+            https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.Params.LoginAuthModel.js_code">
+            <summary>
+            登录时获取的 code
             </summary>
         </member>
         <member name="T:WechatApi.Development.Model.Return.AccessTokenModel">
@@ -72,6 +116,33 @@
         <member name="P:WechatApi.Development.Model.Return.AccessTokenModel.expires_in">
             <summary>
             凭证有效时间，单位：秒。目前是7200秒之内的值。
+            </summary>
+        </member>
+        <member name="T:WechatApi.Development.Model.Return.Code2SessionModel">
+            <summary>
+            code2Session
+            https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/login/auth.code2Session.html
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.Return.Code2SessionModel.openid">
+            <summary>
+            用户唯一标识
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.Return.Code2SessionModel.session_key">
+            <summary>
+            会话密钥
+            </summary>
+        </member>
+        <member name="P:WechatApi.Development.Model.Return.Code2SessionModel.unionid">
+            <summary>
+            用户在开放平台的唯一标识符，在满足 UnionID 下发条件的情况下会返回，详见 UnionID 机制说明。
+            https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html
+            </summary>
+        </member>
+        <member name="T:WechatApi.Development.Model.WechatBaseJson">
+            <summary>
+            
             </summary>
         </member>
         <member name="P:WechatApi.Development.Model.WechatBaseJson.errcode">

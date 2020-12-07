@@ -10,7 +10,7 @@ using WechatApi.Development.Model.Return;
 namespace WechatApi.Development.Business
 {
     /// <summary>
-    /// auth.getAccessToken
+    /// 微信AccessToken
     /// </summary>
     public class AccessTokenBusiness
     {
