@@ -14,6 +14,7 @@ namespace WechatApi.Development.Business
     /// </summary>
     public class AccessTokenBusiness
     {
+
         /// <summary>
         /// 获取AccessToken 
         /// </summary>

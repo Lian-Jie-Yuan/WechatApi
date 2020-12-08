@@ -15,13 +15,23 @@ using WechatApi.Development.Model.Config;
 
 namespace WechatApi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public IConfiguration Configuration { get; }
 
         /// <summary>
@@ -38,10 +48,17 @@ namespace WechatApi
                 // 添加文档
                 exp.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "WechatApi.xml"));
             });
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(exp=> {
+                // 使用iso 格式化日期
+                exp.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

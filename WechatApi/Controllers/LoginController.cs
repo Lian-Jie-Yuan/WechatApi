@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using WechatApi.Development.Business;
 using WechatApi.Development.Model.Config;
 using WechatApi.Development.Model.Params;
+using WechatApi.Development.Model.Return;
 
 namespace WechatApi.Controllers
 {
@@ -38,9 +39,9 @@ namespace WechatApi.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public string AuthCode2Session(LoginAuthModel model)
+        public Code2SessionModel AuthCode2Session(LoginAuthModel model)
         {
-            return JsonConvert.SerializeObject(LoginBusiness.AuthCode2Session(settings.Value.Wechat_AppID, settings.Value.Wechat_AppSecret, model.js_code));
+            return LoginBusiness.AuthCode2Session(settings.Value.Wechat_AppID, settings.Value.Wechat_AppSecret, model.js_code);
         }
     }
 }

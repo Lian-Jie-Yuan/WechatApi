@@ -9,12 +9,12 @@
             缓存策略 参考网址:https://www.cnblogs.com/zhangxiaoyong/p/9472637.html
             </summary>
         </member>
-        <member name="M:WechatApi.Controllers.AccessTokenController.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,Microsoft.Extensions.Options.IOptions{WechatApi.Development.Model.Config.ConfigOption})">
+        <member name="M:WechatApi.Controllers.AccessTokenController.#ctor(Microsoft.Extensions.Options.IOptions{WechatApi.Development.Model.Config.ConfigOption},Microsoft.Extensions.Caching.Memory.IMemoryCache)">
             <summary>
             页面初始化
             </summary>
-            <param name="_memoryCache"></param>
             <param name="configSetting"></param>
+            <param name="_memoryCache"></param>
         </member>
         <member name="M:WechatApi.Controllers.AccessTokenController.TryGetAccessToken">
             <summary>
@@ -155,11 +155,52 @@
             错误信息
             </summary>
         </member>
+        <member name="T:WechatApi.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WechatApi.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:WechatApi.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WechatApi.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WechatApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:WechatApi.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:WechatApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             配置服务
             </summary>
             <param name="services"></param>
+        </member>
+        <member name="M:WechatApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
     </members>
 </doc>

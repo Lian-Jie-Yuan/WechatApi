@@ -18,18 +18,18 @@ namespace WechatApi.Controllers
     [ApiController]
     public class AccessTokenController : ControllerBase
     {
-        private readonly IMemoryCache memoryCache;
+        private static IMemoryCache memoryCache;
         private readonly IOptions<ConfigOption> settings;
 
         /// <summary>
         /// 页面初始化
         /// </summary>
-        /// <param name="_memoryCache"></param>
         /// <param name="configSetting"></param>
-        public AccessTokenController(IMemoryCache _memoryCache, IOptions<ConfigOption> configSetting)
+        /// <param name="_memoryCache"></param>
+        public AccessTokenController(IOptions<ConfigOption> configSetting, IMemoryCache _memoryCache)
         {
-            memoryCache = _memoryCache;
             settings = configSetting;
+            memoryCache = _memoryCache;
         }
         /// <summary>
         /// 获取AccessToken 缓存保存一小时
