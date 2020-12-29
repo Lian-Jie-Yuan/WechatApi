@@ -55,7 +55,8 @@ namespace WechatApi.Development.Business
         {
             try
             {
-                string postUrl = string.Format("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}", wechat_AppID, wechat_AppSecret);
+                string postUrl = string.Format("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}",
+                    wechat_AppID, wechat_AppSecret);
                 string _v = HttpClientHelper.GetInstance().HttpGet(postUrl);
                 if (!string.IsNullOrWhiteSpace(_v))
                 {

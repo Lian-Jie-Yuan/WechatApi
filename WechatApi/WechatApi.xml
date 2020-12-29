@@ -41,6 +41,23 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="T:WechatApi.Controllers.UploadController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WechatApi.Controllers.UploadController.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="hostingEnvironment"></param>
+        </member>
+        <member name="M:WechatApi.Controllers.UploadController.WxPostFile">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WechatApi.Development.Business.AccessTokenBusiness">
             <summary>
             微信AccessToken

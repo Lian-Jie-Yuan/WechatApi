@@ -33,6 +33,7 @@ namespace WechatApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+            ;
     }
 }
