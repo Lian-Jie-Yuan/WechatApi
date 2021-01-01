@@ -22,6 +22,38 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:WechatApi.Controllers.EntityController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WechatApi.Controllers.EntityController.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Wechat.Service.EntityService,Wechat.Service.UsersService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="hostingEnvironment"></param>
+            <param name="option"></param>
+            <param name="_usersService"></param>
+        </member>
+        <member name="M:WechatApi.Controllers.EntityController.CreateEntity(System.String)">
+            <summary>
+            生成实体类
+            </summary>
+            <param name="entityName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WechatApi.Controllers.EntityController.AddUser">
+            <summary>
+            新增一条数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WechatApi.Controllers.EntityController.UserList">
+            <summary>
+            新增一条数据
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WechatApi.Controllers.LoginController">
             <summary>
             登录auth.code2Session
@@ -54,7 +86,7 @@
         </member>
         <member name="M:WechatApi.Controllers.UploadController.WxPostFile">
             <summary>
-            
+            是直接到盘的根目录
             </summary>
             <returns></returns>
         </member>

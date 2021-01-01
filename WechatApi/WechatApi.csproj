@@ -19,11 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WeChat.Business\WeChat.Business.csproj" />
     <ProjectReference Include="..\Wechat.Common\Wechat.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Common\" />
+    <ProjectReference Include="..\Wechat.IService\Wechat.IService.csproj" />
+    <ProjectReference Include="..\Wechat.Model\Wechat.Model.csproj" />
+    <ProjectReference Include="..\Wechat.Service\Wechat.Service.csproj" />
   </ItemGroup>
 
 

@@ -13,7 +13,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using WechatApi.Common;
+using Wechat.Common;
+using Wechat.Model;
+using Wechat.Service;
+using Wechat.IService;
 using WechatApi.Development.Model.Config;
 
 namespace WechatApi
@@ -43,9 +46,13 @@ namespace WechatApi
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DBConfigSettings>(Configuration.GetSection("DBConfigSettings"));
             services.Configure<ConfigOption>(Configuration.GetSection("ConfigSetting"));
             services.AddSingleton<IHostEnvironment, HostingEnvironment>();
-
+            services.AddSingleton<EntityService>();
+            services.AddSingleton<UsersService>();
+            services.AddSingleton<BaseDBFactory>();
+            
 
             services.AddMemoryCache();
             services.AddSwaggerGen(exp =>
@@ -54,7 +61,8 @@ namespace WechatApi
                 // 添加文档
                 exp.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "WechatApi.xml"));
             });
-            services.AddControllers().AddNewtonsoftJson(exp=> {
+            services.AddControllers().AddNewtonsoftJson(exp =>
+            {
                 // 使用iso 格式化日期
                 exp.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             });
@@ -65,6 +73,7 @@ namespace WechatApi
                 options.MultipartBodyLengthLimit = 268435456;
             });
         }
+
 
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

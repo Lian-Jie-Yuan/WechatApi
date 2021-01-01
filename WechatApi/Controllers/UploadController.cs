@@ -57,7 +57,7 @@ namespace WechatApi.Controllers
                     //判断文件大小
                     var fileSize = formFile.Length;
 
-                    if (fileSize > 1024 * 1024 * 10) //10M TODO:(1mb=1024X1024b)
+                    if (fileSize > 1024 * 1024 * 20) //20M TODO:(1mb=1024X1024b)
                     {
                         return new JsonResult(new { isSuccess = false, resultMsg = "上传的文件不能大于10M" });
                     }
