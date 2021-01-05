@@ -27,13 +27,14 @@
             
             </summary>
         </member>
-        <member name="M:WechatApi.Controllers.EntityController.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Wechat.Service.EntityService,Wechat.Service.UsersService)">
+        <member name="M:WechatApi.Controllers.EntityController.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Wechat.Service.EntityService,Wechat.Service.UsersService,Microsoft.Extensions.Logging.ILogger{WechatApi.Controllers.EntityController})">
             <summary>
             构造函数
             </summary>
             <param name="hostingEnvironment"></param>
             <param name="option"></param>
             <param name="_usersService"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:WechatApi.Controllers.EntityController.CreateEntity(System.String)">
             <summary>
@@ -50,7 +51,7 @@
         </member>
         <member name="M:WechatApi.Controllers.EntityController.UserList">
             <summary>
-            新增一条数据
+            获取数据列表
             </summary>
             <returns></returns>
         </member>
@@ -244,12 +245,13 @@
             </summary>
             <param name="services"></param>
         </member>
-        <member name="M:WechatApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:WechatApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
             <summary>
             This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
             </summary>
             <param name="app"></param>
             <param name="env"></param>
+            <param name="loggerFactory"></param>
         </member>
     </members>
 </doc>

@@ -30,9 +30,15 @@ namespace WechatApi
         /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            .ConfigureLogging((context, loggingBuilder) =>
+            {
+                loggingBuilder.AddFilter("System", LogLevel.Warning);
+                loggingBuilder.AddFilter("Microsoft", LogLevel.Warning);
+                loggingBuilder.AddLog4Net();
+            })
+            .ConfigureWebHostDefaults(webBuilder =>
+             {
+                 webBuilder.UseStartup<Startup>();
+             });
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace WechatApi.Controllers
         private readonly EntityService ientityService;
         private readonly UsersService usersService;
         private static IWebHostEnvironment _hostingEnvironment;
+        private readonly ILogger<EntityController> _logger;
 
         /// <summary>
         /// 构造函数
@@ -30,11 +32,13 @@ namespace WechatApi.Controllers
         /// <param name="hostingEnvironment"></param>
         /// <param name="option"></param>
         /// <param name="_usersService"></param>
-        public EntityController(IWebHostEnvironment hostingEnvironment, EntityService option, UsersService _usersService)
+        /// <param name="logger"></param>
+        public EntityController(IWebHostEnvironment hostingEnvironment, EntityService option, UsersService _usersService, ILogger<EntityController> logger)
         {
             _hostingEnvironment = hostingEnvironment;
             ientityService = option;
             usersService = _usersService;
+            _logger = logger;
         }
         /// <summary>
         /// 生成实体类
@@ -72,6 +76,7 @@ namespace WechatApi.Controllers
         [HttpPost("AddUser")]
         public string AddUser()
         {
+            _logger.LogError("======AddUser======");
             try
             {
                 Wechat_Users model = new Wechat_Users()
@@ -80,7 +85,7 @@ namespace WechatApi.Controllers
                     CreateTime = DateTime.Now
                 };
 
-                usersService.Insert(model);
+                usersService.Create(model);
                 return "success";
             }
             catch (Exception err)
@@ -90,16 +95,16 @@ namespace WechatApi.Controllers
         }
 
         /// <summary>
-        /// 新增一条数据
+        /// 获取数据列表
         /// </summary>
         /// <returns></returns>
         [HttpPost("UserList")]
         public List<Wechat_Users> UserList()
         {
+            _logger.LogError("======AddUser======");
             try
             {
-
-                return usersService.GetList();
+                return usersService.GetList<Wechat_Users>();
             }
             catch (Exception err)
             {

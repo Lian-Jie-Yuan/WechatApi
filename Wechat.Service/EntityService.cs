@@ -10,9 +10,8 @@ namespace Wechat.Service
     /// <summary>
     /// 实体操作服务
     /// </summary>
-    public class EntityService : IEntity
+    public class EntityService : BaseService, IEntity
     {
-        public ISqlSugarClient db = null;
         public EntityService(BaseDBFactory factory)
         {
             db = factory.GetClient();
@@ -36,5 +35,6 @@ namespace Wechat.Service
                 throw err;
             }
         }
+
     }
 }
