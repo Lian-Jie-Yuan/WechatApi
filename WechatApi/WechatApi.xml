@@ -27,14 +27,13 @@
             
             </summary>
         </member>
-        <member name="M:WechatApi.Controllers.EntityController.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Wechat.Service.EntityService,Wechat.Service.UsersService,Microsoft.Extensions.Logging.ILogger{WechatApi.Controllers.EntityController})">
+        <member name="M:WechatApi.Controllers.EntityController.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILogger{WechatApi.Controllers.EntityController},WeChat.Business.Entity.EntityBusiness,WeChat.Business.Entity.UsersBusiness)">
             <summary>
             构造函数
             </summary>
             <param name="hostingEnvironment"></param>
-            <param name="option"></param>
-            <param name="_usersService"></param>
             <param name="logger"></param>
+            <param name="option"></param>
         </member>
         <member name="M:WechatApi.Controllers.EntityController.CreateEntity(System.String)">
             <summary>
@@ -72,6 +71,31 @@
             微信授权获取openId和会话密钥
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WechatApi.Controllers.MemberController">
+            <summary>
+            会员信息管理
+            </summary>
+        </member>
+        <member name="M:WechatApi.Controllers.MemberController.#ctor(Microsoft.Extensions.Logging.ILogger{WechatApi.Controllers.EntityController},WeChat.Business.Entity.MemberBusiness)">
+            <summary>
+            
+            </summary>
+            <param name="_logger"></param>
+        </member>
+        <member name="M:WechatApi.Controllers.MemberController.GetMemberInfo(System.String)">
+            <summary>
+            获取会员信息
+            </summary>
+            <param name="openid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WechatApi.Controllers.MemberController.AddMemberInfo(System.String)">
+            <summary>
+            新增一条会员消息
+            </summary>
+            <param name="openid"></param>
             <returns></returns>
         </member>
         <member name="T:WechatApi.Controllers.UploadController">

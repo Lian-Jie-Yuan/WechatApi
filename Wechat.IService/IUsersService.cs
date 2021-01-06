@@ -8,7 +8,7 @@ namespace Wechat.IService
     /// <summary>
     /// 用户服务
     /// </summary>
-    public interface IUsersService
+    public interface IUsersService:IBaseService
     {
 
     }

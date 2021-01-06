@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Wechat.Entity;
 using Wechat.IService;
 using Wechat.Service;
+using WeChat.Business.Entity;
 
 namespace WechatApi.Controllers
 {
@@ -21,25 +22,25 @@ namespace WechatApi.Controllers
     [ApiExplorerSettings(GroupName = "v1")]
     public class EntityController : ControllerBase
     {
-        private readonly EntityService ientityService;
-        private readonly UsersService usersService;
+        private readonly EntityBusiness entityBusiness;
+        private readonly UsersBusiness usersBusiness;
         private static IWebHostEnvironment _hostingEnvironment;
-        private readonly ILogger<EntityController> _logger;
+        private readonly ILogger<EntityController> logger;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="hostingEnvironment"></param>
-        /// <param name="option"></param>
-        /// <param name="_usersService"></param>
         /// <param name="logger"></param>
-        public EntityController(IWebHostEnvironment hostingEnvironment, EntityService option, UsersService _usersService, ILogger<EntityController> logger)
+        /// <param name="option"></param>
+        public EntityController(IWebHostEnvironment hostingEnvironment, ILogger<EntityController> _logger, EntityBusiness option, UsersBusiness _usersBusiness)
         {
             _hostingEnvironment = hostingEnvironment;
-            ientityService = option;
-            usersService = _usersService;
-            _logger = logger;
+            logger = _logger;
+            entityBusiness = option;
+            usersBusiness = _usersBusiness;
         }
+
         /// <summary>
         /// 生成实体类
         /// </summary>
@@ -58,7 +59,7 @@ namespace WechatApi.Controllers
                     baseFileProvider += "\\";
                 }
                 string filePath = baseFileProvider + "Wechat.Entity";
-                if (ientityService.CreateEntity(entityName, filePath))
+                if (entityBusiness.CreateEntity(entityName, filePath))
                 { }
                 return "成功";
             }
@@ -66,7 +67,6 @@ namespace WechatApi.Controllers
             {
                 return "失败";
             }
-            //return Json(bll.CreateEntity(entityName, _hostingEnvironment.ContentRootPath));
         }
 
         /// <summary>
@@ -76,7 +76,6 @@ namespace WechatApi.Controllers
         [HttpPost("AddUser")]
         public string AddUser()
         {
-            _logger.LogError("======AddUser======");
             try
             {
                 Wechat_Users model = new Wechat_Users()
@@ -85,11 +84,12 @@ namespace WechatApi.Controllers
                     CreateTime = DateTime.Now
                 };
 
-                usersService.Create(model);
+                usersBusiness.Create(model);
                 return "success";
             }
             catch (Exception err)
             {
+                logger.LogError(err.Message);
                 return err.Message;
             }
         }
@@ -101,13 +101,13 @@ namespace WechatApi.Controllers
         [HttpPost("UserList")]
         public List<Wechat_Users> UserList()
         {
-            _logger.LogError("======AddUser======");
             try
             {
-                return usersService.GetList<Wechat_Users>();
+                return usersBusiness.GetList<Wechat_Users>();
             }
             catch (Exception err)
             {
+                logger.LogError(err.Message);
                 return null;
             }
         }

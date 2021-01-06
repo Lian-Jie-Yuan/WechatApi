@@ -18,6 +18,7 @@ using Wechat.Model;
 using Wechat.Service;
 using Wechat.IService;
 using WechatApi.Development.Model.Config;
+using WeChat.Business;
 
 namespace WechatApi
 {
@@ -49,18 +50,19 @@ namespace WechatApi
             services.Configure<DBConfigSettings>(Configuration.GetSection("DBConfigSettings"));
             services.Configure<ConfigOption>(Configuration.GetSection("ConfigSetting"));
             services.AddSingleton<IHostEnvironment, HostingEnvironment>();
-            services.AddSingleton<EntityService>();
-            services.AddSingleton<UsersService>();
-            services.AddSingleton<BaseDBFactory>();
-            
+
+            // services注入
+            services.AddApplicationServices(Configuration);
 
             services.AddMemoryCache();
+
             services.AddSwaggerGen(exp =>
             {
                 exp.SwaggerDoc("v1", new OpenApiInfo { Title = "微信小程序接口案例", Version = "v1.0" });
                 // 添加文档
                 exp.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "WechatApi.xml"));
             });
+
             services.AddControllers().AddNewtonsoftJson(exp =>
             {
                 // 使用iso 格式化日期
