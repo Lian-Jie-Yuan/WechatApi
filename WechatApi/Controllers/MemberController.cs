@@ -37,41 +37,55 @@ namespace WechatApi.Controllers
         /// <param name="openid"></param>
         /// <returns></returns>
         [HttpPost("GetMemberInfo")]
-        public List<Wechat_Members> GetMemberInfo(string openid = "")
+        public ResponseResult GetMemberInfo(string openid = "")
         {
+            ResponseResult result = new ResponseResult();
             try
             {
-                return memberBusiness.GetList<Wechat_Members>();
+                var model = memberBusiness.GetMembersByOpenIdOrCreate(openid);
+                result.data = model;
             }
             catch (Exception err)
             {
                 logger.LogError(err.Message);
-                return null;
+                result.code = 1;
+                result.errMsg = err.Message;
             }
+            return result;
         }
 
         /// <summary>
-        /// 新增一条会员消息
+        /// 更新会员微信信息
         /// </summary>
-        /// <param name="openid"></param>
+        /// <param name="openId"></param>
+        /// <param name="avatarUrl"></param>
+        /// <param name="city"></param>
+        /// <param name="country"></param>
+        /// <param name="gender"></param>
+        /// <param name="nickName"></param>
+        /// <param name="province"></param>
         /// <returns></returns>
-        [HttpPost("AddMemberInfo")]
-        public string AddMemberInfo(string openid = "")
+        [HttpPost("EditMemberInfo")]
+        public ResponseResult EditMemberInfo(string openId, string avatarUrl, string city, string country, string gender, string nickName, string province)
         {
+            ResponseResult result = new ResponseResult();
             try
             {
-                Wechat_Members model = new Wechat_Members()
+                if (!memberBusiness.EditMemberInfo(openId, avatarUrl, city, country, gender, nickName, province))
                 {
-                    mNickName = "袁连杰"
-                };
-                return memberBusiness.Create(model) ? "success" : "error";
+                    result.code = 1;
+                    result.errMsg = "修改失败,请检查单据是否存在!";
+                }
             }
             catch (Exception err)
             {
                 logger.LogError(err.Message);
-                return "error02";
+                result.code = 1;
+                result.errMsg = err.Message;
             }
+            return result;
         }
+
 
     }
 }

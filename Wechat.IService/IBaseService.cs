@@ -25,5 +25,7 @@ namespace Wechat.IService
         /// <returns></returns>
         bool Create<T>(T model) where T : class, new();
 
+     
+
     }
 }

@@ -91,11 +91,17 @@
             <param name="openid"></param>
             <returns></returns>
         </member>
-        <member name="M:WechatApi.Controllers.MemberController.AddMemberInfo(System.String)">
+        <member name="M:WechatApi.Controllers.MemberController.EditMemberInfo(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            新增一条会员消息
+            更新会员微信信息
             </summary>
-            <param name="openid"></param>
+            <param name="openId"></param>
+            <param name="avatarUrl"></param>
+            <param name="city"></param>
+            <param name="country"></param>
+            <param name="gender"></param>
+            <param name="nickName"></param>
+            <param name="province"></param>
             <returns></returns>
         </member>
         <member name="T:WechatApi.Controllers.UploadController">
@@ -227,6 +233,26 @@
         <member name="P:WechatApi.Development.Model.WechatBaseJson.errmsg">
             <summary>
             错误信息
+            </summary>
+        </member>
+        <member name="T:WechatApi.ResponseResult">
+            <summary>
+            接口调用返回结果
+            </summary>
+        </member>
+        <member name="P:WechatApi.ResponseResult.code">
+            <summary>
+            0-成功 1-失败
+            </summary>
+        </member>
+        <member name="P:WechatApi.ResponseResult.errMsg">
+            <summary>
+            错误原因
+            </summary>
+        </member>
+        <member name="P:WechatApi.ResponseResult.data">
+            <summary>
+            返回非固定信息
             </summary>
         </member>
         <member name="T:WechatApi.Program">

@@ -34,6 +34,7 @@ namespace Wechat.Model
                     DbType = DbType.SqlServer,
                     IsAutoCloseConnection = true
                 });
+            db.Ado.CommandTimeOut = 10;// 设置超时时间
 
             //添加Sql打印事件，开发中可以删掉这个代码
             db.Aop.OnLogExecuting = (sql, pars) =>

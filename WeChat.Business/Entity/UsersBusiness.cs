@@ -5,11 +5,18 @@ using Wechat.IService;
 
 namespace WeChat.Business.Entity
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UsersBusiness
     {
 
         private readonly IUsersService usersService;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="option"></param>
         public UsersBusiness(IUsersService option)
         {
             usersService = option;
